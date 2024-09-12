@@ -2,18 +2,19 @@ import { useState } from 'react'
 import '@/App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [age, setAge] = useState(0)
+  const [vaild, setValid] = useState(false) /* 성년 여부 */
+
+  function handleInput(event) {
+    const changed = event.currentTarget.value
+    setAge(changed)
+    setValid(changed >= 19)
+  }
 
   return (
     <>
-      <div>{count}</div>
-      <div>
-        <button
-          onClick={(e) => {
-            setCount(count + 1)
-          }}
-        ></button>
-      </div>
+      <input type='number' value={age} onChange={handleInput} />
+      {vaild ? <div>성년입니다.</div> : <div style={{ color: 'red' }}>미성년입니다.</div>}
     </>
   )
 }
