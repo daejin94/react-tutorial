@@ -1,7 +1,11 @@
 import "./App.css";
 
-function ListItem({ children = undefined }) {
-  return <li>{children}</li>;
+function ListItem({ name, age, desc }) {
+  return (
+    <li style={{ textAlign: "left" }}>
+      {name} | {age} | {desc}
+    </li>
+  );
 }
 
 function UnorderedList({ items }) {
@@ -9,7 +13,12 @@ function UnorderedList({ items }) {
     <div>
       <ul>
         {items.map((item, index) => (
-          <ListItem key={index}>{item}</ListItem>
+          <ListItem
+            key={index}
+            name={item.name}
+            age={item.age}
+            desc={item.desc}
+          ></ListItem>
         ))}
       </ul>
     </div>
@@ -18,9 +27,10 @@ function UnorderedList({ items }) {
 
 function App() {
   const items = [
-    "Unordered List Item 1",
-    "Unordered List Item 2",
-    "Unordered List Item 3",
+    { name: "aaaa", age: "10", desc: "안녕하세요" },
+    { name: "bbbb", age: "13", desc: "어서오세요" },
+    { name: "cccc", age: "15", desc: "반갑습니다" },
+    { name: "dddd", age: "12", desc: "어쩌죠이거" },
   ];
   return (
     <>
