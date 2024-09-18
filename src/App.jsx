@@ -6,7 +6,11 @@ function ListItem({ name, age, desc }) {
   return (
     <li style={{ textAlign: "left" }} onClick={(e) => setActivated(!activated)}>
       {name} | {age} |{" "}
-      {activated ? <input value={desc} /> : <span>{desc}</span>}
+      {activated ? (
+        <input value={desc} onClick={(e) => e.stopPropagation()} />
+      ) : (
+        <span>{desc}</span>
+      )}
     </li>
   );
 }
