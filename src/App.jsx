@@ -16,10 +16,20 @@ function ListItem({ name, age, desc, setDesc }) {
             onClick={(e) => e.stopPropagation()}
             onChange={(e) => setDesc(e.currentTarget.value)}
           />
-          <button onClick={(e) => setActivated((previous) => !previous)}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setActivated((previous) => !previous);
+            }}
+          >
             확인
           </button>
-          <button onClick={(e) => setActivated((previous) => !previous)}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setActivated((previous) => !previous);
+            }}
+          >
             취소
           </button>
         </>
