@@ -9,6 +9,16 @@ function App() {
   const [valid, setValid] = useState(false)
   const [entrance, setEntrance] = useState(FEE_NON_ADULT)
 
+  function setCaculate(input) {
+    if (input >= 19) {
+      setValid(true)
+      setEntrance(FEE_ADULT)
+    } else {
+      setValid(false)
+      setEntrance(FEE_NON_ADULT)
+    }
+  }
+
   return (
     <>
       <input
@@ -16,9 +26,11 @@ function App() {
         value={age}
         onChange={(e) => {
           const changed = Number(e.currentTarget.value)
+          // setAge(changed)
+          // setValid(changed >= 19)
+          // setEntrance(valid >= 19 ? FEE_ADULT : FEE_NON_ADULT)
           setAge(changed)
-          setValid(changed >= 19)
-          setEntrance(changed >= 19 ? FEE_ADULT : FEE_NON_ADULT)
+          setCaculate(changed)
         }}
       />
       {valid ? <div> 성년입니다. </div> : <div style={{ color: 'red' }}>미성년입니다.</div>}
