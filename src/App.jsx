@@ -1,9 +1,12 @@
 import "./App.css";
+import { useState } from "react";
 
 function ListItem({ name, age, desc }) {
+  const [activated, setActivated] = useState(false);
   return (
-    <li style={{ textAlign: "left" }}>
-      {name} | {age} | {desc}
+    <li style={{ textAlign: "left" }} onClick={(e) => setActivated(!activated)}>
+      {name} | {age} |{" "}
+      {activated ? <input value={desc} /> : <span>{desc}</span>}
     </li>
   );
 }
